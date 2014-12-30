@@ -2,6 +2,11 @@
 Thumbs.db
 ehthumbs.db
 
+# Declutter .pyc files
+
+__pycache__/
+*.py[cod]
+
 # Folder config file
 Desktop.ini
 
@@ -43,7 +48,3 @@ Temporary Items
 .apdisk
 
 
-# Declutter .pyc files
-
-__pycache__/
-*.py[cod]
