@@ -1,46 +1,6 @@
-import pyganim
+import pyganim, time
 
 from generics import *
-
-
-# Constants
-FPS          = 100
-
-WINDOWWIDTH  = 1600
-WINDOWHEIGHT = 900
-
-ENEMYSPEED   = 4
-ENEMYWIDTH   = 50
-ENEMYHEIGHT  = 50
-
-PLAYERSPEED  = 10
-PLAYERHEALTH = 100
-PLAYERARMOR  = 100
-PLAYERWIDTH  = 100
-PLAYERHEIGHT = 100
-
-MENUWIDTH  = 400
-MENUHEIGHT = 300
-
-LASERWIDTH   = 30
-LASERHEIGHT  = 5
-LASERSPEED   = 16
-
-# Color palette
-GRAY     = (100, 100, 100)
-NAVYBLUE = ( 60,  60, 100)
-WHITE    = (255, 255, 255)
-RED      = (255,   0,   0)
-GREEN    = (  0, 255,   0)
-BLUE     = (  0,   0, 255)
-YELLOW   = (255, 255,   0)
-ORANGE   = (255, 128,   0)
-PURPLE   = (255,   0, 255)
-CYAN     = (  0, 255, 255)
-BLACK    = (  0,   0,   0)
-
-BGCOLOR  = ( 28,  28,  28)
-
 
 pygame.init()
 screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
@@ -70,6 +30,7 @@ EXPLOSHEET1 = pygame.image.load('images/explo1.png').convert_alpha()
 EXPLOSHEET2 = pygame.image.load('images/explo2.png').convert_alpha()
 
 # Enemy
+UFOSHEET     = pygame.image.load('images/ufo sheet.png').convert_alpha()
 EYEBALLIMAGE = pygame.image.load('images/eyeball.png').convert_alpha()
 ENEMYIMAGE   = pygame.image.load('images/enemy.png').convert_alpha()
 BLANKENEMY   = pygame.image.load('images/blank enemy.png').convert_alpha()
@@ -78,6 +39,7 @@ BLANKENEMY   = pygame.image.load('images/blank enemy.png').convert_alpha()
 CROSSHAIR = pygame.image.load('images/crosshair.png').convert_alpha()
 
 # Player
+PLAYERRECT = pygame.image.load('images/player rect.png')
 BLUESHIP   = pygame.image.load('images/blueship.png').convert_alpha()
 
 # Weapon
@@ -97,6 +59,13 @@ PLANET1 = pygame.image.load('images/planet1.png').convert_alpha()
 PLANET2 = pygame.image.load('images/planet2.png').convert_alpha()
 PLANET3 = pygame.image.load('images/planet3.png').convert_alpha()
 PLANET4 = pygame.image.load('images/planet4.png').convert_alpha()
+
+# UFO animation
+ufo_sprites = cutSpriteSheet(84, 84, 6, 84, UFOSHEET, 6)
+
+UFOANIM = pyganim.PygAnimation(
+    [(ufo_sprites[0], 0.1), (ufo_sprites[1], 0.1), (ufo_sprites[2], 0.1),
+     (ufo_sprites[3], 0.1), (ufo_sprites[4], 0.1), (ufo_sprites[5], 0.1)])
 
 # Explosion animations
 explo_sprites_1 = cutSpriteSheet(50, 128, 18, 128, EXPLOSHEET1, 18)
@@ -131,4 +100,5 @@ EXPLOANIM2 = pyganim.PygAnimation(
 LASERSOUND     = pygame.mixer.Sound('sounds/laser.wav')
 EXPLOSIONSOUND = pygame.mixer.Sound('sounds/explosion.wav')
 COLLECTCOIN    = pygame.mixer.Sound('sounds/collect coin.wav')
+
 

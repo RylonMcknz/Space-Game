@@ -1,6 +1,8 @@
-import random
-
 from weapon import *
+
+
+enemy_attackers = pygame.sprite.RenderUpdates()
+
 
 # Make enemy sprite to be put in groups
 class KamikazeEnemy(pygame.sprite.Sprite):
@@ -24,7 +26,7 @@ class KamikazeEnemy(pygame.sprite.Sprite):
         if enemy.rect.y > enemy.victim_y:
             enemy.rect.y -= ENEMYSPEED
 
-
+# Maybe do asteroid too
 class DroneEnemy(pygame.sprite.Sprite):
     def __init__(enemy, x, y, image):
         pygame.sprite.Sprite.__init__(enemy)
@@ -81,5 +83,6 @@ class StarEnemy(pygame.sprite.Sprite):
                     weapon = Weapon(LASERIMAGE, enemy_center_x + coords_x[i], enemy_center_y + coords_y[i], shot_angle, ortho_vects[i])
                     enemy_weap_group.add(weapon)
                     arena_sprites.add(weapon)
+                    enemy_attackers.add(weapon)
                     arena_sprites.move_to_back(weapon)
                     i += 1

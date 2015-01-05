@@ -1,6 +1,7 @@
 import pyganim
-
 from generics import *
+
+loot_group = pygame.sprite.RenderUpdates()
 
 # Create coin sprite for looting and such
 class Coin(pygame.sprite.Sprite):
